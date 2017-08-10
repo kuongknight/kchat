@@ -1,0 +1,25 @@
+{
+  "vsicons.presets.angular": false,
+  "javascript.validate.enable": false,
+  "standard.enable": true,
+  "standard.autoFixOnSave": true,
+  "standard.options": {
+    "parser": "babel-eslint",
+    "globals": [
+      "__DEVELOPMENT__",
+      "__CLIENT__",
+      "__SERVER__",
+      "__DISABLE_SSR__",
+      "__DEVTOOLS__",
+      "socket",
+      "webpackIsomorphicTools"
+    ],
+    "ignore": [
+      "webpack/*",
+      "karma.conf.js",
+      "tests.webpack.js",
+      "node_modules/**",
+      "**/__tests__/**"
+    ]
+  }
+}
