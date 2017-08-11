@@ -7,14 +7,16 @@ import bcrypt from 'bcrypt'
  */
 const UserSchema = new mongoose.Schema({
   uid: {
-    type: String,
-    required: true
+    type: String
   },
   username: {
     type: String,
     required: true
   },
-  password: String,
+  password: {
+    type: String,
+    required: true
+  },
   profile: mongoose.Schema.Types.Mixed
 })
 
@@ -32,7 +34,7 @@ UserSchema.plugin(timestamps)
  */
 UserSchema.method({
   generateHash: password => bcrypt.hashSync(password, bcrypt.genSaltSync(), null),
-  verifyPassword: password => bcrypt.compareSync(password, this.password)
+  verifyPassword: function (password) { return bcrypt.compareSync(password, this.password) }
 })
 
 UserSchema.pre('save', function (next) {
